@@ -33,7 +33,7 @@ angular.module('app')
   })
   .when('/editapp/:action/:appid?', {
     templateUrl: 'app/applications/edit.html',
-    controller: 'ApplicationsCtrl',
+    controller: 'EditAppCtrl',
     controllerAs: 'vm'
   })
   .when('/environments', {
