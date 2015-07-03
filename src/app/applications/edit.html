@@ -19,8 +19,8 @@
                 <div class="col-sm-5"></div>
             </div>
         </form>
-        <div class="env" ng-repeat="environment in vm.applicationEnvs.envs">
-            <input type="checkbox" ng-model="environment.id" id="">
+        <div class="env" ng-repeat="environment in vm.allEnvs">
+            <input type="checkbox" ng-model="environment.id" id="" ng-checked="environment.isLinked">
                 {{environment.longName}}
             </span>
         </div>

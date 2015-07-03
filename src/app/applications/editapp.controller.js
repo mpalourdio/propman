@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('EditAppCtrl', function ($routeParams, Applications, $location) {
+    .controller('EditAppCtrl', function ($routeParams, Applications, Environments, $location, $q) {
         var vm = this;
 
         var id = $routeParams.id;
@@ -10,13 +10,24 @@ angular.module('app')
             $location.path('/applications');
         }
 
-        Applications.getAppEnv(id)
-            .success(function (data) {
-                vm.applicationEnvs = data;
-            })
-            .error(function () {
-                vm.errorMessage = 'Impossible de récupérer l\'application';
-            });
+        $q.all([Applications.getAppEnv(id), Environments.all()]).then(
+            function (results) {
+                vm.applicationEnvs = results[0].data;
+                vm.allEnvs         = results[1].data;
+                for (var i = 0; i < vm.allEnvs.length; i++) {
+                    vm.allEnvs[i].isLinked = false;
+                    for (var j = 0; j < vm.applicationEnvs.envs.length; j++) {
+                        if (vm.allEnvs[i].id === vm.applicationEnvs.envs[j].id) {
+                            vm.allEnvs[i].isLinked = true;
+                            break;
+                        }
+                    }
+                }
+            },
+            function () {
+                console.log('$q a foiré :(')
+            }
+        );
 
         vm.save = function () {
             if (id) {
@@ -42,4 +53,5 @@ angular.module('app')
         vm.cancel = function () {
             gotoApplicationsList();
         };
-    });
+    })
+;
