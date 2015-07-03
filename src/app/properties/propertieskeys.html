@@ -1,0 +1,46 @@
+<div class="container">
+
+	<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+  <div class="text-center">
+    <h1>Liste des clés de propriété pour {{vm.application.name}}</h1>
+  </div>
+
+	<div ng-show="vm.errorMessage" class="alert alert-warning">
+		{{vm.errorMessage}}
+	</div>
+
+	<div ng-hide="vm.propertieskeys.properties.length && !vm.errorMessage">
+		<img src="assets/images/ajax-loader.gif"/>
+	</div>
+
+	<div ng-show="vm.propertieskeys.properties.length">
+
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Clé</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="property in vm.propertieskeys.properties">
+        <td>{{property.key}}</td>
+        <td>
+          <div class="row btnVerticalAlign">
+            <a href="" ng-click="vm.delete(property)" title="Supprimer"><span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><input type="text" class="form-control" ng-model="vm.key" placeholder="Clé"></td>
+        <td><a ng-href="" ng-click="vm.add({})" class="btn btn-primary active" role="button">
+          Ajouter
+        </a></td>
+      </tr>
+      </tbody>
+    </table>
+
+	</div>
+
+</div>

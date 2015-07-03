@@ -46,9 +46,14 @@ angular.module('app')
     controller: 'EditenvCtrl',
     controllerAs: 'vm'
   })
-  .when('/properties', {
-    templateUrl: 'app/properties/properties.html',
-    controller: 'PropertiesCtrl',
+  .when('/propertieskeys/:id?', {
+    templateUrl: 'app/properties/propertieskeys.html',
+    controller: 'PropertieskeysCtrl',
+    controllerAs: 'vm'
+  })
+  .when('/propertiesvalues/:id?', {
+    templateUrl: 'app/properties/propertiesvalues.html',
+    controller: 'PropertiesvaluesCtrl',
     controllerAs: 'vm'
   })
   .otherwise({
