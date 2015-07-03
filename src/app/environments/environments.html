@@ -6,6 +6,8 @@
 	<br>
 	<br>
 
+  <pre>{{vm.environments | json }}</pre>
+
 	<div class="row" ng-class="{'bg-info':$even}" ng-repeat="environment in vm.environments">
 		<div class="col-xs-12 col-sm-8">
 			<div>
@@ -29,7 +31,7 @@
     </div>
 	</div>
 
-	<div class="jumbotron" ng-hide="vm.users.length">
+	<div class="jumbotron" ng-hide="vm.environments.length">
 		Pas d'environnement
 	</div>
 
