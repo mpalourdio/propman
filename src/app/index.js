@@ -16,7 +16,7 @@ angular.module('app')
     controllerAs: 'vm'
   })
   .when('/edit/:id?', {
-    templateUrl: 'app/edit/edit.html',
+    templateUrl: 'app/editUser/edit.html',
     controller: 'EditCtrl',
     controllerAs: 'vm',
     access : [ USER_ROLES.admin ]
@@ -42,7 +42,7 @@ angular.module('app')
     controllerAs: 'vm'
   })
   .when('/editenv/:id?', {
-    templateUrl: 'app/editenv/edit.html',
+    templateUrl: 'app/editEnv/edit.html',
     controller: 'EditenvCtrl',
     controllerAs: 'vm'
   })
