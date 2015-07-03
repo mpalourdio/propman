@@ -12,20 +12,31 @@ angular.module('app')
 
 
     Users.get(id)
-      .success(function(data) { vm.user = data; })
-      .error(function() { vm.errorMessage = 'Impossible de récupérer l\'utilisateur'});
+      .success(function (data) {
+        vm.user = data;
+      })
+      .error(function () {
+        vm.errorMessage = 'Impossible de récupérer l\'utilisateur'
+      });
 
     vm.save = function () {
       if (id) {
-        Users.update(vm.user);
-        gotoUsersList();
+        Users.update(vm.user)
+          .success(function () {
+            gotoUsersList();
+          })
+          .error(function () {
+            vm.errorMessage = 'Impossible de mettre à jour l\'utilisateur'
+          });
       } else {
-        Users.add(vm.user).then(function (id) {
-          console.log('Personne ajoutée id ' + id);
-          gotoUsersList();
-        }, function (error) {
-          console.log('Erreur lors de l\'ajout:', error);
-        });
+        Users.add(vm.user)
+          .success(function (user) {
+            console.log('Personne ajoutée id ' + user.id);
+            gotoUsersList();
+          })
+          .error(function () {
+            vm.errorMessage = 'Erreur lors de l\'ajout.';
+          });
       }
     };
 
