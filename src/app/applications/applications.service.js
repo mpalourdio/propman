@@ -20,16 +20,17 @@ angular.module('app')
                 return $http.get(BACKEND_URL.APPLICATIONS);
             },
 
-            get: function (appId) {
-                return $http.get(appIdUrl(appId));
-            },
 
             add: function (app) {
                 return $http.post(BACKEND_URL.APPLICATIONS, app);
             },
 
-            getAppEnv: function(appId) {
+            getAppEnv: function (appId) {
                 return $http.get(appEnv(appId));
+            },
+
+            updateAppEnv: function (appId, envs) {
+                return $http.post(appEnv(appId), envs);
             },
 
             delete: function (app) {

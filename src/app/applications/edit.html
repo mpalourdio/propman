@@ -13,18 +13,19 @@
                 <label for="inputApplication" class="col-sm-2 control-label">Application</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" ng-model="vm.applicationEnvs.name" id="inputApplication" placeholder="Application">
+                    <input type="text" class="form-control" ng-model="vm.application.name" id="inputApplication" placeholder="Application">
                 </div>
 
                 <div class="col-sm-5"></div>
             </div>
         </form>
         <div class="env" ng-repeat="environment in vm.allEnvs">
-            <input type="checkbox" ng-model="environment.id" id="" ng-checked="environment.isLinked">
+            <input type="checkbox" ng-model="environment.isLinked" id="{{$index}}">
+            <label for="{{$index}}">
                 {{environment.longName}}
-            </span>
-        </div>
+            </label>
 
+        </div>
     </div>
 
     <div class="row">

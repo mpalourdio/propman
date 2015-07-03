@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('app')
-    .controller('EditAppCtrl', function ($routeParams, Applications, Environments, $location, $q) {
-        var vm = this;
-
-        var id = $routeParams.id;
+    .controller('EditAppCtrl', function ($routeParams, Applications, Environments, $location, $q, Editor) {
+        var vm         = this;
+        var id         = $routeParams.id;
+        vm.application = Editor.editedObject();
 
         function gotoApplicationsList() {
             $location.path('/applications');
@@ -30,24 +30,22 @@ angular.module('app')
         );
 
         vm.save = function () {
-            if (id) {
-                Applications.update(vm.application)
-                    .success(function () {
-                        gotoApplicationsList();
-                    })
-                    .error(function () {
-                        vm.errorMessage = 'Impossible de mettre à jour l\'application'
-                    });
-            } else {
-                Applications.add(vm.application)
-                    .success(function (user) {
-                        console.log('Application ajoutée id ' + application.id);
-                        gotoApplicationsList();
-                    })
-                    .error(function () {
-                        vm.errorMessage = 'Erreur lors de l\'ajout.';
-                    });
-            }
+            var checkedEnvsIds = vm.allEnvs.filter(function (env) {
+                return env.isLinked;
+            }).map(function (env) {
+                return env.id
+            });
+
+            $q.all(
+                [
+                    Applications.update(vm.application),
+                    Applications.updateAppEnv(id, checkedEnvsIds)
+                ]).then(function () {
+                    gotoApplicationsList();
+                },
+                function (error) {
+                    console.log('error $q2');
+                });
         };
 
         vm.cancel = function () {
