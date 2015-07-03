@@ -2,29 +2,32 @@
 
 	<div ng-include="'app/components/navbar/navbar.html'"></div>
 
-	<a ng-href="#/editenv/" class="btn btn-primary active" role="button">Ajouter un environnement</a>
-	<br>
-	<br>
+  <div ng-show="vm.errorMessage" class="alert alert-warning">
+    {{vm.errorMessage}}
+  </div>
 
   <pre>{{vm.environments | json }}</pre>
 
-	<div class="row" ng-class="{'bg-info':$even}" ng-repeat="environment in vm.environments">
+  <a ng-href="#/editenv/" class="btn btn-primary active" role="button">Ajouter un environnement</a>
+
+
+  <div class="row" ng-class="{'bg-info':$even}" ng-repeat="environment in vm.environments">
 		<div class="col-xs-12 col-sm-8">
 			<div>
-        <a ng-href="#/editenv/{{environment.$id}}">
-				  {{environment.shortname}}
+        <a ng-href="#/editenv/{{environment.id}}">
+				  {{environment.shortName}}
         </a>
 			</div>
 
 			<div>
-				{{environment.longname}}
+				{{environment.longName}}
 			</div>
 		</div>
 
     <div class="col-sm-2">
 
       <div class="row" access="{{vm.USER_ROLES.admin}}">
-        <a ng-href="#/editenv/{{environment.$id}}" class="btn btn-primary active" role="button">Modifier</a>
+        <a ng-href="#/editenv/{{environment.id}}" class="btn btn-primary active" role="button">Modifier</a>
         <button ng-click="vm.delete(environment)" class="btn btn-danger active">Supprimer</button>
       </div>
 

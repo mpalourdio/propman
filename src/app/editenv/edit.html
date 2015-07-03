@@ -2,6 +2,10 @@
 
   <div ng-include="'app/components/navbar/navbar.html'"></div>
 
+  <div ng-show="vm.errorMessage" class="alert alert-warning">
+    {{vm.errorMessage}}
+  </div>
+
   <div class="row">
 
     <form class="form-horizontal">
@@ -9,7 +13,7 @@
         <label for="inputShortName" class="col-sm-2 control-label">Nom court</label>
 
         <div class="col-sm-5">
-          <input type="text" class="form-control" ng-model="vm.environment.shortname" id="inputShortName" placeholder="Nom court">
+          <input type="text" class="form-control" ng-model="vm.environment.shortName" id="inputShortName" placeholder="Nom court">
         </div>
 
         <div class="col-sm-5"></div>
@@ -18,7 +22,7 @@
         <label for="inputLongName" class="col-sm-2 control-label">Nom long</label>
 
         <div class="col-sm-5">
-          <input type="text" class="form-control" ng-model="vm.environment.longname" id="inputLongName" placeholder="Nom long">
+          <input type="text" class="form-control" ng-model="vm.environment.longName" id="inputLongName" placeholder="Nom long">
         </div>
 
         <div class="col-sm-5"></div>
