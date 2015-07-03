@@ -1,39 +1,51 @@
 <div class="container">
 
-	<div ng-include="'app/components/navbar/navbar.html'"></div>
+  <div ng-include="'app/components/navbar/navbar.html'"></div>
 
   <div ng-show="vm.errorMessage" class="alert alert-warning">
     {{vm.errorMessage}}
   </div>
 
-  <a ng-href="#/editenv/" class="btn btn-primary active" role="button">Ajouter un environnement</a>
+  <div ng-hide="vm.errorMessage">
 
+    <div class="loading" ng-hide="vm.environments.length">
+      <img src="assets/images/ajax-loader.gif"/>
+    </div>
 
-  <div class="row" ng-class="{'bg-info':$even}" ng-repeat="environment in vm.environments">
-		<div class="col-xs-12 col-sm-8">
-			<div>
-        <a ng-href="#/editenv/{{environment.id}}">
-				  {{environment.shortName}}
-        </a>
-			</div>
+    <div ng-show="vm.environments.length">
 
-			<div>
-				{{environment.longName}}
-			</div>
-		</div>
+      <a ng-href="" ng-click="vm.edit({})" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
+        Ajouter un environnement
+      </a>
 
-    <div class="col-sm-2">
+      <br/>
+      <br/>
 
-      <div class="row" access="{{vm.USER_ROLES.admin}}">
-        <a ng-href="#/editenv/{{environment.id}}" class="btn btn-primary active" role="button">Modifier</a>
-        <button ng-click="vm.delete(environment)" class="btn btn-danger active">Supprimer</button>
-      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>Short name</th>
+          <th>Long name</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="env in vm.environments">
+          <td>{{env.shortName}}</td>
+          <td>{{env.longName}}</td>
+          <td>
+            <div class="row btnVerticalAlign" access="{{vm.USER_ROLES.admin}}">
+              <a href="" ng-click="vm.edit(env)" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+              <a href="" ng-click="vm.delete(env)" title="Supprimer"><span
+                class="glyphicon glyphicon-trash"></span></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
 
     </div>
-	</div>
 
-	<div class="jumbotron" ng-hide="vm.environments.length">
-		Pas d'environnement
-	</div>
+  </div>
 
 </div>
