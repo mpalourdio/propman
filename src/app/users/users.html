@@ -4,9 +4,9 @@
 
 	<div ng-show="vm.errorMessage" class="alert alert-warning">
 		{{vm.errorMessage}}
-	</div> 
+	</div>
 
-	<div ng-hide="vm.users.length">
+	<div ng-hide="vm.users.length && !vm.errorMessage">
 		<img src="assets/images/ajax-loader.gif"/>
 	</div>
 
@@ -23,18 +23,23 @@
 
 			<div class="col-sm-10">
 				<h4>
-					<a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/edit/{{user.$id}}">
-						{{user.name.first | capitalize}} {{user.name.last | capitalize}}
-					</a>
+          <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/edit/{{user.id}}">
+            {{user.iup}}
+          </a>
 					<span ng-hide="vm.AuthService.isLoggedIn()">
-						{{user.name.first | capitalize}} {{user.name.last | capitalize}}
+						{{user.iup}}
 					</span>
 				</h4>
 
-				<div>
-					<span class="glyphicon glyphicon-earphone"></span>
-					{{user.phone}}
-				</div>
+				<p>
+          {{user.first | capitalize}} {{user.last | capitalize}}
+				</p>
+
+        <p ng-if="user.appEnv.length"><b>App/Env :</b>
+          <span ng-repeat="appEnv in user.appEnv">
+            <span class="label label-default">{{appEnv.application.name}}-{{appEnv.environment.shortName}}</span>&nbsp;
+          </span>
+        </p>
 
 			</div>
 

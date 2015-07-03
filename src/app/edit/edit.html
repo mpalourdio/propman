@@ -2,6 +2,10 @@
 
   <div ng-include="'app/components/navbar/navbar.html'"></div>
 
+  <div ng-show="vm.errorMessage" class="alert alert-warning">
+    {{vm.errorMessage}}
+  </div>
+
   <div class="row">
 
     <form class="form-horizontal">
@@ -9,7 +13,7 @@
         <label for="inputPrenom" class="col-sm-2 control-label">Prénom</label>
 
         <div class="col-sm-5">
-          <input type="text" class="form-control" ng-model="vm.user.name.first" id="inputPrenom" placeholder="Prénom">
+          <input type="text" class="form-control" ng-model="vm.user.first" id="inputPrenom" placeholder="Prénom">
         </div>
 
         <div class="col-sm-5"></div>
@@ -19,22 +23,25 @@
         <label for="inputNom" class="col-sm-2 control-label">Nom</label>
 
         <div class="col-sm-5">
-          <input type="text" class="form-control" ng-model="vm.user.name.last" id="inputNom" placeholder="Nom">
+          <input type="text" class="form-control" ng-model="vm.user.last" id="inputNom" placeholder="Nom">
         </div>
 
         <div class="col-sm-5"></div>
 
       </div>
       <div class="form-group">
-        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+        <label class="col-sm-2 control-label">App/Env</label>
 
         <div class="col-sm-5">
-          <input type="email" class="form-control" ng-model="vm.user.email" id="inputEmail" placeholder="Email">
+          <span ng-repeat="appEnv in vm.user.appEnv">
+            <span class="label label-default">{{appEnv.application.name}}-{{appEnv.environment.shortName}}</span>&nbsp;
+          </span>
         </div>
 
         <div class="col-sm-5"></div>
 
       </div>
+
     </form>
 
   </div>
