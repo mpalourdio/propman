@@ -10,11 +10,6 @@ angular.module('app')
     controller: 'MainCtrl',
     controllerAs: 'vm'
   })
-  .when('/about', {
-    templateUrl: 'app/about/about.html',
-    controller: 'AboutCtrl',
-    controllerAs: 'vm'
-  })
   .when('/users', {
     templateUrl: 'app/users/users.html',
     controller: 'UsersCtrl',
