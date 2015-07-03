@@ -26,12 +26,12 @@ angular.module('app')
     controller: 'LoginCtrl',
     controllerAs: 'vm'
   })
-  .when('/applications/', {
+  .when('/applications', {
     templateUrl: 'app/applications/applications.html',
     controller: 'ApplicationsCtrl',
     controllerAs: 'vm'
   })
-  .when('/applications/:action/:appid', {
+  .when('/editapp/:action/:appid', {
     templateUrl: 'app/applications/edit.html',
     controller: 'ApplicationsCtrl',
     controllerAs: 'vm'
