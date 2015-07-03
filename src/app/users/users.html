@@ -14,7 +14,7 @@
 
     <div ng-show="vm.users.length">
 
-      <a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
+      <a ng-href="" ng-click="vm.edit({})" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
         Ajouter un utilisateur
       </a>
 
@@ -43,7 +43,7 @@
           </td>
           <td>
             <div class="row btnVerticalAlign" access="{{vm.USER_ROLES.admin}}">
-              <a href="#/edit/{{user.id}}" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+              <a href="" ng-click="vm.edit(user)" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
               <a href="" ng-click="vm.delete(user)" title="Supprimer"><span
                 class="glyphicon glyphicon-trash"></span></a>
             </div>

@@ -9,6 +9,20 @@
   <div class="row">
 
     <form class="form-horizontal">
+
+      <div class="form-group">
+
+        <label for="inputIUP" class="col-sm-2 control-label">IUP</label>
+
+        <div class="col-sm-5">
+          <input ng-hide="vm.userCopy.id" type="text" class="form-control" ng-model="vm.user.iup" id="inputIUP"
+                 placeholder="IUP" ng-disabled="vm.user.id ? true : false">
+        </div>
+
+        <div class="col-sm-5"></div>
+
+      </div>
+
       <div class="form-group">
         <label for="inputPrenom" class="col-sm-2 control-label">Prénom</label>
 
@@ -19,6 +33,7 @@
         <div class="col-sm-5"></div>
 
       </div>
+
       <div class="form-group">
         <label for="inputNom" class="col-sm-2 control-label">Nom</label>
 
@@ -29,7 +44,8 @@
         <div class="col-sm-5"></div>
 
       </div>
-      <div class="form-group">
+
+      <div class="form-group" ng-show="vm.user.id">
         <label class="col-sm-2 control-label">App/Env</label>
 
         <div class="col-sm-5">

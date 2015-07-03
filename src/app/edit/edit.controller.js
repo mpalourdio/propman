@@ -1,26 +1,17 @@
 'use strict';
 
 angular.module('app')
-  .controller('EditCtrl', function ($routeParams, Users, $location) {
+  .controller('EditCtrl', function (Editor, Users, $location) {
     var vm = this;
-
-    var id = $routeParams.id;
 
     function gotoUsersList() {
       $location.path('/users');
     }
 
-
-    Users.get(id)
-      .success(function (data) {
-        vm.user = data;
-      })
-      .error(function () {
-        vm.errorMessage = 'Impossible de récupérer l\'utilisateur'
-      });
+    vm.user = Editor.editedObject();
 
     vm.save = function () {
-      if (id) {
+      if (vm.user.id) {
         Users.update(vm.user)
           .success(function () {
             gotoUsersList();
