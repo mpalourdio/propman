@@ -37,7 +37,7 @@
 
         <div class="row" access="{{vm.USER_ROLES.admin}}">
           <a ng-href="#/edit/{{user.$id}}" class="btn btn-primary active" role="button">Modifier</a>
-          <button ng-click="vm.delete()" class="btn btn-danger active">Supprimer</button>
+          <button ng-click="vm.delete(user)" class="btn btn-danger active">Supprimer</button>
         </div>
 
       </div>

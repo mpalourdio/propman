@@ -12,7 +12,6 @@ angular.module('app')
     vm.delete = function (user) {
       if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
         Users.delete(user);
-        $location.path('/users');
       }
     };
   });
