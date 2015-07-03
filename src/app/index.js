@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ngRoute', 'firebase', 'ui.bootstrap']);
+angular.module('app', ['ngRoute', 'ui.bootstrap']);
 
 angular.module('app')
 .config(function ($routeProvider, USER_ROLES) {
