@@ -6,10 +6,10 @@ angular.module('app')
 
 	vm.USER_ROLES = USER_ROLES;
 	vm.AuthService = AuthService;
-	
+
 	Users.all()
 	.success(function(data) { vm.users = data; })
-	.error(function() { vm.errorMessage = 'Impossible de récupérer la liste des utilisateurs'})
+	.error(function() { vm.errorMessage = 'Impossible de récupérer la liste des utilisateurs'});
 
 	vm.delete = function (user) {
 		if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {

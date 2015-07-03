@@ -1,26 +1,28 @@
 <div class="container">
 
-	<div ng-include="'app/components/navbar/navbar.html'"></div>
+  <div ng-include="'app/components/navbar/navbar.html'"></div>
 
-	<div ng-show="vm.errorMessage" class="alert alert-warning">
-		{{vm.errorMessage}}
-	</div>
+  <div ng-show="vm.errorMessage" class="alert alert-warning">
+    {{vm.errorMessage}}
+  </div>
 
-	<div ng-hide="vm.users.length && !vm.errorMessage">
-		<img src="assets/images/ajax-loader.gif"/>
-	</div>
+  <div ng-hide="vm.errorMessage">
 
-	<div ng-show="vm.users.length">
+    <div class="loading" ng-hide="vm.users.length">
+      <img src="assets/images/ajax-loader.gif"/>
+    </div>
 
-		<a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
-			Ajouter un utilisateur
-		</a>
+    <div ng-show="vm.users.length">
 
-		<br/>
-		<br/>
+      <a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
+        Ajouter un utilisateur
+      </a>
 
-    <table class="table table-striped table-hover">
-      <thead>
+      <br/>
+      <br/>
+
+      <table class="table table-striped table-hover">
+        <thead>
         <tr>
           <th>IUP</th>
           <th>Nom</th>
@@ -28,27 +30,30 @@
           <th>AppEnv</th>
           <th></th>
         </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="user in vm.users">
-        <td>{{user.iup}}</td>
-        <td>{{user.first | capitalize}}</td>
-        <td>{{user.last | capitalize}}</td>
-        <td>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in vm.users">
+          <td>{{user.iup}}</td>
+          <td>{{user.first | capitalize}}</td>
+          <td>{{user.last | capitalize}}</td>
+          <td>
           <span ng-repeat="appEnv in user.appEnv">
             <span class="label label-default">{{appEnv.application.name}}-{{appEnv.environment.shortName}}</span>&nbsp;
           </span>
-        </td>
-        <td>
-          <div class="row btnVerticalAlign" access="{{vm.USER_ROLES.admin}}">
-            <a href="#/edit/{{user.id}}" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-            <a href="" ng-click="vm.delete(user)" title="Supprimer"><span class="glyphicon glyphicon-trash"></span></a>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+          </td>
+          <td>
+            <div class="row btnVerticalAlign" access="{{vm.USER_ROLES.admin}}">
+              <a href="#/edit/{{user.id}}" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+              <a href="" ng-click="vm.delete(user)" title="Supprimer"><span
+                class="glyphicon glyphicon-trash"></span></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
 
-	</div>
+    </div>
+
+  </div>
 
 </div>
