@@ -1,50 +1,56 @@
 <div class="container">
 
-    <div ng-include="'app/components/navbar/navbar.html'"></div>
+  <div ng-include="'app/components/navbar/navbar.html'"></div>
 
-    <div ng-show="vm.errorMessage" class="alert alert-warning">
-        {{vm.errorMessage}}
-    </div>
+  <div ng-show="vm.errorMessage" class="alert alert-warning">
+    {{vm.errorMessage}}
+  </div>
 
-    <div ng-hide="vm.applications.length && !vm.errorMessage">
-        <img src="assets/images/ajax-loader.gif"/>
+  <div ng-hide="vm.errorMessage">
+
+    <div class="loading" ng-hide="vm.applications.length">
+      <img src="assets/images/ajax-loader.gif"/>
     </div>
 
     <div ng-show="vm.applications.length">
 
-        <a ng-href="#/editapp/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
-            Ajouter une application
-        </a>
+      <a ng-href="#/editapp/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
+        Ajouter une application
+      </a>
 
-        <br/>
-        <br/>
+      <br/>
+      <br/>
 
-        <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Application</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="application in vm.applications">
-                <td>{{application.id}}</td>
-                <td>{{application.name | capitalize}}</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>
-                    <div class="row btnVerticalAlign" access="{{vm.USER_ROLES.admin}}">
-                        <a href="#/editapp/{{application.id}}" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                        <a href="" ng-click="vm.delete(application)" title="Supprimer"><span class="glyphicon glyphicon-trash"></span></a>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Application</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="application in vm.applications">
+          <td>{{application.id}}</td>
+          <td>{{application.name | capitalize}}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>
+            <div class="row btnVerticalAlign" access="{{vm.USER_ROLES.admin}}">
+              <a href="#/editapp/{{application.id}}" title="Modifier"><span
+                class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+              <a href="" ng-click="vm.delete(application)" title="Supprimer"><span
+                class="glyphicon glyphicon-trash"></span></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
 
     </div>
+
+  </div>
 
 </div>
