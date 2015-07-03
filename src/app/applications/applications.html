@@ -1,28 +1,22 @@
 <div class="container">
     <div ng-include="'app/components/navbar/navbar.html'">gggggg</div>
 
-    <a ng-href="#/editapp/edit" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
+    <a ng-href="#/editapp" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
         Ajouter une application</a>
     <br>
     <br>
 
     <div class="row" ng-class="{'bg-info':$even}" ng-repeat="application in vm.applications">
-        <div class="col-md-4">
-            <a ng-href="#/applications/edit/{{application.id}}">
-                <img ng-src="{{application.logo}}" alt="{{application.name}}" class="img-responsive img-circle">
-            </a>
-        </div>
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-12">
             <h4>
-                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/editapp/edit/{{application.id}}">
+                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/editapp/{{application.id}}">
                     {{application.name | capitalize}}
                 </a>
             </h4>
-            <span> {{application.description | capitalize}} </span>
         </div>
         <div class="col-xs-12 col-md-2">
-            <a class="btn btn-primary" ng-href="#/editapp/edit/{{application.id}}">Editer</a>
-            <a class="btn btn-danger" ng-href="#/editapp/del/{{application.id}}">Supprimer</a>
+            <a class="btn btn-primary" ng-href="#/editapp/{{application.id}}">Editer</a>
+            <a class="btn btn-danger" ng-href="#/editapp/{{application.id}}">Supprimer</a>
         </div>
     </div>
 

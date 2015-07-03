@@ -31,7 +31,7 @@ angular.module('app')
     controller: 'ApplicationsCtrl',
     controllerAs: 'vm'
   })
-  .when('/editapp/:action/:appid?', {
+  .when('/editapp/:id?', {
     templateUrl: 'app/applications/edit.html',
     controller: 'EditAppCtrl',
     controllerAs: 'vm'

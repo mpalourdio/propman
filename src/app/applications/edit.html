@@ -2,14 +2,18 @@
 
     <div ng-include="'app/components/navbar/navbar.html'"></div>
 
+    <div ng-show="vm.errorMessage" class="alert alert-warning">
+        {{vm.errorMessage}}
+    </div>
+
     <div class="row">
 
         <form class="form-horizontal">
             <div class="form-group">
-                <label for="inputApplications" class="col-sm-2 control-label">Application</label>
+                <label for="inputApplication" class="col-sm-2 control-label">Application</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" ng-model="vm.application" id="inputApplications" placeholder="Application">
+                    <input type="text" class="form-control" ng-model="vm.application.name" id="inputApplication" placeholder="Application">
                 </div>
 
                 <div class="col-sm-5"></div>

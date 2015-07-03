@@ -1,24 +1,18 @@
 'use strict';
 
 angular.module('app')
-    .controller('ApplicationsCtrl', function (Users, AuthService, USER_ROLES) {
+    .controller('ApplicationsCtrl', function (Users, AuthService, USER_ROLES, Applications) {
         var vm = this;
 
         vm.USER_ROLES  = USER_ROLES;
         vm.AuthService = AuthService;
 
-        vm.applications = Users.all();
-        vm.applications = [{
-            id:          "1",
-            name:        "gpecs",
-            logo:        "http://www.sirrix.com/media/images/60452.png",
-            description: "Application qui ne fait rien"
-        },
-            {
-                id:          "2",
-                name:        "test",
-                logo:        "http://www.sirrix.com/media/images/60452.png",
-                description: "Application qui ne fait"
-            }
-        ]
+        Applications.all()
+            .success(function (data) {
+                vm.applications = data;
+            })
+            .error(function () {
+                vm.errorMessage = 'Impossible de récupérer la liste des utilisateurs'
+            })
+
     });
