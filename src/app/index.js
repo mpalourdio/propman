@@ -37,13 +37,18 @@ angular.module('app')
     controllerAs: 'vm'
   })
   .when('/applications/:appid', {
-      templateUrl: 'app/applications/edit.html',
-      controller: 'ApplicationsCtrl',
-      controllerAs: 'vm'
+    templateUrl: 'app/applications/edit.html',
+    controller: 'ApplicationsCtrl',
+    controllerAs: 'vm'
   })
   .when('/environments', {
     templateUrl: 'app/environments/environments.html',
     controller: 'EnvironmentsCtrl',
+    controllerAs: 'vm'
+  })
+  .when('/editenv/:id?', {
+    templateUrl: 'app/editenv/edit.html',
+    controller: 'EditenvCtrl',
     controllerAs: 'vm'
   })
   .otherwise({
