@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-  .controller('EditenvCtrl', function ($routeParams, environments, $location) {
+  .controller('EditenvCtrl', function ($routeParams, Environments, $location) {
     var vm = this;
 
     var id = $routeParams.id;
@@ -10,10 +10,10 @@ angular.module('app')
       $location.path('/environments');
     }
 
-    vm.environment = angular.copy(environments.get(id)) || {};
+    //vm.environment = angular.copy(environments.get(id)) || {};
 
     vm.save = function () {
-      if (id) {
+      /*if (id) {
         environments.update(vm.environment);
         gotoenvironmentsList();
       } else {
@@ -37,7 +37,7 @@ angular.module('app')
         }, function (error) {
           console.log('Erreur lors de l\'ajout:', error);
         });
-      }
+      }*/
     };
 
     vm.cancel = function () {
