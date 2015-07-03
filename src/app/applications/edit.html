@@ -13,13 +13,17 @@
                 <label for="inputApplication" class="col-sm-2 control-label">Application</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" ng-model="vm.application.name" id="inputApplication" placeholder="Application">
+                    <input type="text" class="form-control" ng-model="vm.applicationEnvs.name" id="inputApplication" placeholder="Application">
                 </div>
 
                 <div class="col-sm-5"></div>
-
             </div>
         </form>
+        <div class="env" ng-repeat="environment in vm.applicationEnvs.envs">
+            <input type="checkbox" ng-model="environment.id" id="">
+                {{environment.longName}}
+            </span>
+        </div>
 
     </div>
 

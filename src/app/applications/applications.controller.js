@@ -10,6 +10,7 @@ angular.module('app')
         Applications.all()
             .success(function (data) {
                 vm.applications = data;
+                console.log(data);
             })
             .error(function () {
                 vm.errorMessage = 'Impossible de récupérer la liste des utilisateurs'

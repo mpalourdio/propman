@@ -7,6 +7,10 @@ angular.module('app')
             return BACKEND_URL.APPLICATIONS + '/' + appId;
         }
 
+        function appEnv(appId) {
+            return BACKEND_URL.APPLICATIONS + '/' + appId + '/env';
+        }
+
         function appUrl(application) {
             return appIdUrl(application.id);
         }
@@ -22,6 +26,10 @@ angular.module('app')
 
             add: function (app) {
                 return $http.post(BACKEND_URL.APPLICATIONS, app);
+            },
+
+            getAppEnv: function(appId) {
+                return $http.get(appEnv(appId));
             },
 
             delete: function (app) {
