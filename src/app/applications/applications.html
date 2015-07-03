@@ -1,7 +1,7 @@
 <div class="container">
     <div ng-include="'app/components/navbar/navbar.html'">gggggg</div>
 
-    <a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
+    <a ng-href="#/editapp/edit" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
         Ajouter une application</a>
     <br>
     <br>
@@ -14,15 +14,15 @@
         </div>
         <div class="col-xs-12 col-md-6">
             <h4>
-                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/applications/edit/{{application.id}}">
+                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/editapp/edit/{{application.id}}">
                     {{application.name | capitalize}}
                 </a>
             </h4>
             <span> {{application.description | capitalize}} </span>
         </div>
         <div class="col-xs-12 col-md-2">
-            <a class="btn btn-primary" ng-href="#/applications/edit/{{application.id}}">Editer</a>
-            <a class="btn btn-danger" ng-href="#/applications/del/{{application.id}}">Supprimer</a>
+            <a class="btn btn-primary" ng-href="#/editapp/edit/{{application.id}}">Editer</a>
+            <a class="btn btn-danger" ng-href="#/editapp/del/{{application.id}}">Supprimer</a>
         </div>
     </div>
 

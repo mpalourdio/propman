@@ -1,32 +1,33 @@
 <div class="container">
-    <div ng-include="'app/components/navbar/navbar.html'">gggggg</div>
 
-    <a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">
-        Ajouter une application</a>
-    <br>
-    <br>
-EDITION
-    <div class="row" ng-class="{'bg-info':$even}" ng-repeat="application in vm.applications">
-        <div class="col-md-4">
-            <a ng-href="#/detail/{{user.$id}}">
-                <img ng-src="{{application.logo}}" alt="{{application.name}}" class="img-responsive img-circle">
-            </a>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <h4>
-                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/detailapp/{{application.$id}}">
-                    {{application.name | capitalize}}
-                </a>
-            </h4>
-            <span> {{application.description | capitalize}} </span>
-        </div>
-        <div class="col-xs-12 col-md-2">
-            <a class="btn btn-primary">Editer</a>
-            <a class="btn btn-danger">Supprimer</a>
-        </div>
+    <div ng-include="'app/components/navbar/navbar.html'"></div>
+
+    <div class="row">
+
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputApplications" class="col-sm-2 control-label">Application</label>
+
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="vm.application" id="inputApplications" placeholder="Application">
+                </div>
+
+                <div class="col-sm-5"></div>
+
+            </div>
+        </form>
+
     </div>
 
-    <div class="jumbotron" ng-hide="vm.applications.length">
-        Pas d'applications
+    <div class="row">
+
+        <div class="col-sm-12" style="text-align: center;">
+
+            <button ng-click="vm.cancel()" class="btn btn-primary active">Annuler</button>
+            <button ng-click="vm.save()" class="btn btn-danger active">Sauvegarder</button>
+
+        </div>
+
     </div>
+
 </div>
