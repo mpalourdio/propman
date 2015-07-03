@@ -20,12 +20,6 @@ angular.module('app')
     controller: 'UsersCtrl',
     controllerAs: 'vm'
   })
-  .when('/detail/:id', {
-    templateUrl: 'app/detail/detail.html',
-    controller: 'DetailCtrl',
-    controllerAs: 'vm',
-    access : [ USER_ROLES.any ]
-  })
   .when('/edit/:id?', {
     templateUrl: 'app/edit/edit.html',
     controller: 'EditCtrl',
