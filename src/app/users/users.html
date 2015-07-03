@@ -4,6 +4,7 @@
 
   <a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">Ajouter un
     utilisateur</a>
+
   <br>
   <br>
 
@@ -20,11 +21,6 @@
       </h4>
 
       <div>
-        <span class="glyphicon glyphicon-map-marker"></span>
-        {{user.location.street}}, {{user.location.city}}
-      </div>
-
-      <div>
         <span class="glyphicon glyphicon-earphone"></span>
         {{user.phone}}
       </div>
@@ -37,7 +33,7 @@
 
     <div class="col-sm-2">
 
-      <div access="{{vm.USER_ROLES.admin}}">
+      <div class="row" access="{{vm.USER_ROLES.admin}}">
         <a ng-href="#/edit/{{user.$id}}" class="btn btn-primary active" role="button">Modifier</a>
         <button ng-click="vm.delete()" class="btn btn-danger active">Supprimer</button>
       </div>
