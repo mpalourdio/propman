@@ -31,10 +31,15 @@ angular.module('app')
     controller: 'LoginCtrl',
     controllerAs: 'vm'
   })
-  .when('/applications', {
+  .when('/applications/', {
     templateUrl: 'app/applications/applications.html',
     controller: 'ApplicationsCtrl',
     controllerAs: 'vm'
+  })
+  .when('/applications/appid', {
+      templateUrl: 'app/applications/edit.html',
+      controller: 'ApplicationsCtrl',
+      controllerAs: 'vm'
   })
   .when('/environments', {
     templateUrl: 'app/environments/environments.html',
