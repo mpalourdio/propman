@@ -1,0 +1,29 @@
+<div class="container">
+
+	<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputLogin" class="col-sm-2 control-label">login</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" ng-model="vm.login" id="inputLogin" placeholder="Login">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword" class="col-sm-2 control-label">password</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" ng-model="vm.password" id="inputPassword" placeholder="Password">
+			</div>
+		</div>
+	</form>
+
+	<br/>
+
+	<div class="row">	
+		<div class="col-sm-10 col-sm-offset-2">
+			<a href="" ng-click="vm.logIn()" class="btn btn-primary active" role="button">Se connecter</a>
+			<a href="" ng-click="vm.AuthService.logout()" class="btn btn-warning active" role="button">Se déconnecter</a>
+		</div>
+	</div>
+
+</div>

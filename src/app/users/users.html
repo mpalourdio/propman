@@ -1,0 +1,45 @@
+<div class="container">
+
+	<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+	<a ng-href="#/edit/" access="{{vm.USER_ROLES.admin}}" class="btn btn-primary active" role="button">Ajouter un utilisateur</a>
+	<br>
+	<br>
+
+	<div class="row" ng-class="{'bg-info':$even}" ng-repeat="user in vm.users">
+		<div class="col-xs-12 col-sm-4">
+			<a ng-href="#/detail/{{user.$id}}">
+				<img ng-src="{{user.picture.thumbnail}}" alt="{{user.name.first}}" class="img-responsive img-circle">
+			</a>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			<h4>
+				<a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/detail/{{user.$id}}">
+					{{user.name.first | capitalize}} {{user.name.last | capitalize}}
+				</a>
+				<span ng-hide="vm.AuthService.isLoggedIn()">
+					{{user.name.first | capitalize}} {{user.name.last | capitalize}}
+				</span>
+			</h4>
+			<div>
+				<span class="glyphicon glyphicon-map-marker"></span>
+				{{user.location.street}}, {{user.location.city}}
+			</div>
+
+			<div>
+				<span class="glyphicon glyphicon-earphone"></span>
+				{{user.phone}}
+			</div>
+
+			<div>
+				<span class="glyphicon glyphicon-envelope"></span>
+				{{user.email}}
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron" ng-hide="vm.users.length">
+		Pas d'utilisateurs
+	</div>
+
+</div>

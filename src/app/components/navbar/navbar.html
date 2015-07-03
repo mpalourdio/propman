@@ -1,0 +1,27 @@
+<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl as vm">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+        <span class="glyphicon glyphicon-home"></span> Gulp Angular
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active:vm.isActive('/')}"><a ng-href="#/">Home</a></li>
+        <li ng-class="{active:vm.isActive('/about')}"><a ng-href="#/about">Météo</a></li>
+        <li ng-class="{active:vm.isActive('/users')}"><a ng-href="#/users">Users</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-class="{active:vm.isActive('/login')}">
+          <a ng-href="#/login">
+              <span ng-hide="vm.AuthService.isLoggedIn()">Login</span>
+              <span ng-show="vm.AuthService.isLoggedIn() && !vm.AuthService.isAdmin()">User</span>
+              <span ng-show="vm.AuthService.isLoggedIn() && vm.AuthService.isAdmin()">Admin</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
