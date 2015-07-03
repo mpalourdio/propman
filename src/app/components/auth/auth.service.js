@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('app').constant('USER_ROLES', {
-	any: '*',
-	user: 'user',
+	guest: 'guest',
+	exploitant: 'exploitant',
+	dev: 'dev',
 	admin: 'admin'
 });
 
