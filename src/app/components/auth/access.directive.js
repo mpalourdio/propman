@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .directive('access', function (AuthService, USER_ROLES) {
   return {

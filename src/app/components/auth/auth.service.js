@@ -8,8 +8,8 @@ angular.module('app').constant('USER_ROLES', {
 
 angular.module('app')
 .factory('AuthService', function(USER_ROLES) {
-	var currentLogin = undefined;
-	var currentRole = undefined;
+	var currentLogin = 'admin';
+	var currentRole = USER_ROLES.admin;
 
 	return {
 		login : function(login, password) {
