@@ -46,6 +46,11 @@ angular.module('app')
     controller: 'EditenvCtrl',
     controllerAs: 'vm'
   })
+  .when('/properties', {
+    templateUrl: 'app/properties/properties.html',
+    controller: 'PropertiesCtrl',
+    controllerAs: 'vm'
+  })
   .otherwise({
     redirectTo: '/'
   });
