@@ -37,6 +37,16 @@ angular.module('app')
     controller: 'LoginCtrl',
     controllerAs: 'vm'
   })
+  .when('/applications', {
+    templateUrl: 'app/applications/applications.html',
+    controller: 'ApplicationsCtrl',
+    controllerAs: 'vm'
+  })
+  .when('/environments', {
+    templateUrl: 'app/environments/environments.html',
+    controller: 'EnvironmentsCtrl',
+    controllerAs: 'vm'
+  })
   .otherwise({
     redirectTo: '/'
   });
