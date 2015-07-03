@@ -8,21 +8,21 @@
 
     <div class="row" ng-class="{'bg-info':$even}" ng-repeat="application in vm.applications">
         <div class="col-md-4">
-            <a ng-href="#/detail/{{user.$id}}">
+            <a ng-href="#/applications/edit/{{application.id}}">
                 <img ng-src="{{application.logo}}" alt="{{application.name}}" class="img-responsive img-circle">
             </a>
         </div>
         <div class="col-xs-12 col-md-6">
             <h4>
-                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/detailapp/{{application.$id}}">
+                <a ng-show="vm.AuthService.isLoggedIn()" ng-href="#/applications/edit/{{application.id}}">
                     {{application.name | capitalize}}
                 </a>
             </h4>
             <span> {{application.description | capitalize}} </span>
         </div>
         <div class="col-xs-12 col-md-2">
-            <a class="btn btn-primary">Editer</a>
-            <a class="btn btn-danger">Supprimer</a>
+            <a class="btn btn-primary" ng-href="#/applications/edit/{{application.id}}">Editer</a>
+            <a class="btn btn-danger" ng-href="#/applications/del/{{application.id}}">Supprimer</a>
         </div>
     </div>
 
