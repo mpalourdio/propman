@@ -12,7 +12,7 @@ angular.module('app')
 
     Environments.get(id)
       .success(function(data) { vm.environment = data; })
-      .error(function() { vm.errorMessage = 'Impossible de récupérer l\'utilisateur'});
+      .error(function() { vm.errorMessage = 'Impossible de récupérer l\'environnement'});
 
     vm.save = function () {
       if (id) {
@@ -20,7 +20,7 @@ angular.module('app')
         gotoEnvironmentsList();
       } else {
         Environments.add(vm.environment).then(function (id) {
-          console.log('Personne ajoutée id ' + id);
+          console.log('Environnement ajouté id ' + id);
           gotoEnvironmentsList();
         }, function (error) {
           console.log('Erreur lors de l\'ajout:', error);
